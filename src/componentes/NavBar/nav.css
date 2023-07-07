@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 10% 10% 10% 10% 50%;
+  grid-template-areas: "accesorio griferia ceramica  porcelanatos  logo";
+  padding: 25px;
+  border: 5px;
+  width: 100 max-content;
+  list-style: none;
+}
+
+.accesorio {
+  grid-area: accesorio;
+  margin: 20px;
+}
+
+.griferia {
+  grid-area: griferia;
+  margin: 20px;
+}
+
+.ceramica {
+  grid-area: ceramica;
+  margin: 20px;
+}
+
+.porcelanatos {
+  grid-area: porcelanatos;
+  margin: 20px;
+}
+
+.logo {
+  grid: logo;
+  margin: 20px;
+}
