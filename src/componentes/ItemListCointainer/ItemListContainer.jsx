@@ -1,10 +1,14 @@
+import { CiTextAlignCenter, CiTextAlignJustify } from "react-icons/ci";
+import Navbar from "../NavBar/NavBar";
+
 function ListContainer(greeting) {
-  let griferia = ["Bidet"];
-  let accesorio = ["8 piezas"];
+  let grif = ["Baño", "Ducha", "Ducha"];
+  let cera = ["San Lorenzo ", "Cerro Negro"];
   return (
     <div>
-      <li>{griferia}</li>
-      <li>{accesorio}</li>
+      <li>{grif}</li>
+
+      <li>{cera}</li>
     </div>
   );
 }
