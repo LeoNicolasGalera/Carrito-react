@@ -1,21 +1,37 @@
 import "./nav.css";
 import Logo from "../CartWidget/CartWidget";
-import ListContainer from "../ItemListCointainer/ItemListContainer";
+import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar(props) {
   return (
-    <ul className="navbar">
-      <li className="griferia">Griferia</li>
+    <nav>
+      <ul className="navbar">
+        <h1>
+          <li className="principal">
+            <Link to="/inicio">Productos</Link>
+          </li>
+        </h1>
 
-      <li className="accesorio">Accesorio</li>
-      <li className="porcelanatos"> Porcelanatos</li>
-      <li className="ceramica"> Ceramica</li>
-      <>
-        <div className="logo">
-          <Logo />
-        </div>
-      </>
-    </ul>
+        <li className="griferia">
+          <Link to="productos">Griferia</Link>
+        </li>
+
+        <li className="accesorio">
+          <Link to="/">Accesorio</Link>
+        </li>
+        <li className="porcelanatos">
+          <Link to="/">Porcelanatos</Link>
+        </li>
+        <li className="ceramica">
+          <Link to="/">Ceramica</Link>
+        </li>
+        <>
+          <div className="logo">
+            <Logo />
+          </div>
+        </>
+      </ul>
+    </nav>
   );
 }
 

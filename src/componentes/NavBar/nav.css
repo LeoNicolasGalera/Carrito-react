@@ -6,12 +6,16 @@
 
 .navbar {
   display: grid;
-  grid-template-columns: 10% 10% 10% 10% 50%;
-  grid-template-areas: "accesorio griferia ceramica  porcelanatos  logo";
+  grid-template-columns: 15% 15% 15% 15% 15% 15%;
+  grid-template-areas: "principal accesorio griferia ceramica  porcelanatos  logo";
   padding: 25px;
   border: 5px;
   width: 100 max-content;
   list-style: none;
+}
+.navbar a {
+  text-decoration: none;
+  color: black;
 }
 
 .accesorio {
@@ -37,4 +41,10 @@
 .logo {
   grid: logo;
   margin: 20px;
+}
+
+.principal {
+  grid-area: principal;
+
+  text-align: center;
 }
