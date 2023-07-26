@@ -1,16 +1,49 @@
-import { CiTextAlignCenter, CiTextAlignJustify } from "react-icons/ci";
-import Navbar from "../NavBar/NavBar";
+import React, { useState } from "react";
+import getData, { categoryData } from "../servicios/asynMock";
+import Tarjeta from "../Tarjetas/Tarjetas";
+import { useParams } from "react-router-dom";
 
-function ListContainer(greeting) {
-  let grif = ["Baño", "Ducha", "Ducha"];
-  let cera = ["San Lorenzo ", "Cerro Negro"];
+function ItemListContainer() {
+  const [products, setProducts] = useState([]);
+  const { categoryId } = useParams();
+
+  async function requestProducts() {
+    let respuesta = [];
+
+    if (categoryId === undefined) {
+      respuesta = await getData();
+    } else {
+      respuesta = await categoryData(categoryId);
+    }
+    setProducts(respuesta);
+  }
+
+  requestProducts();
+
   return (
-    <div>
-      <li>{grif}</li>
+    <>
+      <div>
+        <h1 style={{ textAlign: "center" }}>DETALLE PRODUCTOS </h1>
+      </div>
 
-      <li>{cera}</li>
-    </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateRows: "repeat(4,200%)",
+          gridTemplateColumns: "30% 30% 30%",
+          margin: "20px",
+          overflow: "hidden",
+          gap: "30px",
+          textAlign: "center",
+          width: "100%",
+        }}
+      >
+        {products.map((item) => (
+          <Tarjeta {...item} />
+        ))}
+      </div>
+    </>
   );
 }
 
-export default ListContainer;
+export default ItemListContainer;
