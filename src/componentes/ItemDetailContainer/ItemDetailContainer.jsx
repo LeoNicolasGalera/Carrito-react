@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getProductData } from "../servicios/asynMock";
+import { CategoryData, getProductData } from "../servicios/asynMock";
 import { useParams } from "react-router-dom";
 
 function ItemDetailContainer() {
@@ -14,13 +14,21 @@ function ItemDetailContainer() {
 
   useEffect(() => {
     requestDetail();
-  }, []);
+  }, [id]);
   return (
-    <div style={{ textAlign: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        width: "50%",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
       <h1>{products.title}</h1>
-      <img src={products.img} alt="" />
-      <p>${products.price}</p>
-      <p>{products.stock}</p>
+      <h2>{products.description} </h2>
+      <img src={products.img} alt="" width={"50%"} />
+      <p>$ {products.price}</p>
+      <p>Stock:{products.stock}</p>
       <button>Cotizar</button>
     </div>
   );

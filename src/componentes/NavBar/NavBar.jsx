@@ -8,22 +8,22 @@ function Navbar(props) {
       <ul className="navbar">
         <h1>
           <li className="principal">
-            <Link to="/inicio">Productos</Link>
+            <Link to="/inicio">PRODUCTOS</Link>
           </li>
         </h1>
 
         <li className="griferia">
-          <Link to="productos">Griferia</Link>
+          <Link to="/category/griferia">Griferia</Link>
         </li>
 
         <li className="accesorio">
-          <Link to="/">Accesorio</Link>
+          <Link to="/category/accesorio">Accesorio</Link>
         </li>
         <li className="porcelanatos">
-          <Link to="/">Porcelanatos</Link>
+          <Link to="/category/porcelanato ">Porcelanatos</Link>
         </li>
         <li className="ceramica">
-          <Link to="/">Ceramica</Link>
+          <Link to="/category/ceramica">Ceramica</Link>
         </li>
         <>
           <div className="logo">
