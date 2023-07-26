@@ -3,9 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+/* body {
   overflow: hidden;
-}
+} */
 
 .navbar {
   display: grid;
