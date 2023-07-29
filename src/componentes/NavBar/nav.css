@@ -22,8 +22,6 @@
   color: black;
   font-family: "IBM Plex Mono", monospace;
   font-size: x-large;
-  box-shadow: black;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .accesorio {
   grid-area: accesorio;
