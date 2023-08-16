@@ -1,24 +1,29 @@
-import React, { useState } from "react";
-import getData, { categoryData } from "../servicios/asynMock";
+import React, { useEffect, useState } from "react";
+
+import { getData, categoryData } from "../servicios/firebase";
+
 import Tarjeta from "../Tarjetas/Tarjetas";
 import { useParams } from "react-router-dom";
+import { Card } from "../Piezas/Piezas";
 
 function ItemListContainer() {
   const [products, setProducts] = useState([]);
   const { categoryId } = useParams();
 
-  async function requestProducts() {
-    let respuesta = [];
+  useEffect(() => {
+    async function requestProducts() {
+      let respuesta = [];
 
-    if (categoryId === undefined) {
-      respuesta = await getData();
-    } else {
-      respuesta = await categoryData(categoryId);
+      if (categoryId === undefined) {
+        respuesta = await getData();
+      } else {
+        respuesta = await categoryData(categoryId);
+      }
+      setProducts(respuesta);
     }
-    setProducts(respuesta);
-  }
 
-  requestProducts();
+    requestProducts();
+  }, [categoryId]);
 
   return (
     <>
@@ -31,6 +36,7 @@ function ItemListContainer() {
           display: "grid",
           gridTemplateRows: "repeat(4,200%)",
           gridTemplateColumns: "30% 30% 30%",
+
           margin: "20px",
           overflow: "hidden",
           gap: "30px",

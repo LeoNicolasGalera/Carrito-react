@@ -27,7 +27,9 @@ function Navbar(props) {
         </li>
         <>
           <div className="logo">
-            <Logo />
+            <Link to="/cart">
+              <Logo />
+            </Link>
           </div>
         </>
       </ul>
