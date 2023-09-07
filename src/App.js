@@ -3,10 +3,11 @@ import ItemListContainer from "./componentes/ItemListCointainer/ItemListContaine
 import ItemDetailContainer from "./componentes/ItemDetailContainer/ItemDetailContainer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createContext, useState } from "react";
-import CartContainer from "./componentes/CartContainer/CartContainer";
+
 import OrderConfirm from "./componentes/OrderConfirm/OrderConfirm";
 
 import Checkout from "./componentes/Checkout/Checkout";
+import CartContainer from "./componentes/CartContainer/CartContainer";
 
 const cartContext = createContext({ cart: [5, 10, 5, 50] });
 
@@ -53,7 +54,6 @@ function App() {
     </div>
   );
 }
-
 export default App;
 
 export { cartContext };

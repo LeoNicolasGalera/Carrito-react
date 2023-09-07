@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { createOrder } from "../servicios/firebase";
 import { cartContext } from "../../App";
+
 import React, { useContext, useState } from "react";
 
 function Checkout() {
@@ -75,17 +76,12 @@ function Checkout() {
         />
       </div>
 
-      <button
-        disabled={
-          !(buyer.firstname !== "" && buyer.lastname !== "" && buyer.age !== "")
-        }
-        onClick={handleCheckout}
-      >
-        Crear orden
-      </button>
+      <button onClick={handleCheckout}>Crear orden</button>
       <button onClick={resetForm}>Cancelar</button>
     </form>
   );
 }
 
 export default Checkout;
+
+// disabled={!(buyer.firstname !== "" && buyer.lastname !== "" && buyer.age !== "")}

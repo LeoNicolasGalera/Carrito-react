@@ -1,5 +1,5 @@
 import React from "react";
-
+import CartContainer, { orderData } from "../CartContainer/CartContainer";
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -28,41 +28,45 @@ const db = getFirestore(app);
 async function getData() {
   const productRef = collection(db, "productos");
   const querySnapshot = await getDocs(productRef);
-  const docsData = querySnapshot.map((doc) => doc.data());
+
+  const documents = querySnapshot.docs;
+  const docsData = documents.map(item => {
+    return { ...item.data(), id: item.id };
+  });
 
   return docsData;
 }
-console.log(getData());
 
-async function getProductData() {
-  const productRef = doc(db, "productos", "id");
+async function getProductData(id) {
+  const productRef = doc(db, "productos", id);
   const doctSnap = await getDoc(productRef);
 
   if (doctSnap.exists()) {
-    return doctSnap.data();
+    return { ...doctSnap.data(), id: doctSnap.id };
   } else {
     throw new Error("No encontramos ese producto ");
   }
 }
 
 async function categoryData() {
-  const q = query(collection(db, "productos"), where("category", "==", true));
+  const productsRef = collection(db, "productos");
+  const q = query(productsRef, where("category", "==", "griferia"));
 
   const querySnapshot = await getDocs(q);
-
-  querySnapshot.map((doc) => {
-    return doc.id, "=>", doc.data();
+  const documents = querySnapshot.docs;
+  const docsData = documents.map(item => {
+    return { ...item.data(), id: item.id };
   });
+
+  return docsData;
 }
 
-console.log(categoryData());
-
 async function createOrder(orderData) {
-  const collectionRef = collection(db, "productos", orderData);
+  const collectionRef = collection(db, "orders");
   const docCreated = await addDoc(collectionRef, orderData);
   return docCreated.id;
 }
-console.log(createOrder());
+
 async function getOrder(id) {
   const docRef = doc(db, "orders", id);
   const docSnapshot = await getDocs(docRef);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getOrder } from "../servicios/firebase";
 
 function OrderConfirm() {
@@ -8,7 +8,7 @@ function OrderConfirm() {
   const { id } = useParams();
 
   useEffect(() => {
-    getOrder(id).then((order) => {
+    getOrder(id).then(order => {
       SetOrderData(order);
     });
   }, []);
@@ -21,7 +21,7 @@ function OrderConfirm() {
           Fecha de la compra:{orderData.date}
           <p>
             Tus productos comprados:
-            {orderData.items.map((item) => {
+            {orderData.items.map(item => {
               return (
                 <small>
                   {item.title}-{item.count}
@@ -33,6 +33,8 @@ function OrderConfirm() {
       ) : (
         <p>Cargando.....</p>
       )}
+
+      <Link to="/inicio">VOLVER AL INICIO</Link>
     </div>
   );
 }
